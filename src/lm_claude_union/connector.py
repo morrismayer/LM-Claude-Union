@@ -1,5 +1,15 @@
 """
-NotebookLMClaude — connect one or many Jupyter notebooks to Claude.
+NotebookLMClaude — connect any combination of sources to Claude and query them.
+
+Supported sources (same set as Google NotebookLM):
+  • Google Docs / Slides
+  • Google Drive files
+  • PDFs (local or URL)
+  • Web pages (public URL)
+  • YouTube videos (transcript)
+  • Jupyter notebooks (.ipynb)
+  • Plain text / Markdown files
+  • Raw strings
 
 Quick start
 -----------
@@ -7,15 +17,12 @@ Quick start
 
     from lm_claude_union import NotebookLMClaude
 
-    # Single notebook
-    with NotebookLMClaude("analysis.ipynb") as nb:
-        print(nb.query("What datasets were used?"))
-
-    # Multiple notebooks
     conn = NotebookLMClaude()
-    conn.connect_many(["intro.ipynb", "results.ipynb", "discussion.ipynb"])
-    print(conn.query("Summarise the key findings across all notebooks."))
-    conn.clear()
+    conn.add_google_doc("https://docs.google.com/document/d/...")
+    conn.add_youtube("https://youtu.be/dQw4w9WgXcQ")
+    conn.add_pdf("report.pdf")
+
+    print(conn.query("What are the key themes?"))
 """
 from __future__ import annotations
 
@@ -23,109 +30,160 @@ from pathlib import Path
 from typing import Iterator
 
 from .claude_client import ClaudeClient
-from .notebook_parser import ParsedNotebook, parse_notebook, parse_notebooks
+from .notebook_parser import parse_notebook
+from .sources.base import LoadedSource, Source
+from .sources.google_docs import GoogleDocSource, GoogleDriveSource
+from .sources.pdf import PDFSource
+from .sources.text import RawTextSource, TextFileSource
+from .sources.web import WebSource
+from .sources.youtube import YouTubeSource
 
 
 class NotebookLMClaude:
     """
-    A session that connects one or more Jupyter notebooks to Claude.
+    A session that connects one or more sources to Claude.
 
-    Notebooks are parsed once on connection; their full text is sent to
-    Claude as a prompt-cached context block, so repeated queries against
-    the same set of notebooks are efficient.
+    Sources are loaded lazily on the first :meth:`query` call (or explicitly
+    via :meth:`load_sources`) so you can build the source list without
+    incurring network / file IO costs immediately.
 
     Parameters
     ----------
-    *notebooks:
-        Zero or more notebook paths to connect immediately.
     api_key:
-        Anthropic API key.  Falls back to the ``ANTHROPIC_API_KEY``
-        environment variable when omitted.
+        Anthropic API key.  Falls back to the ``ANTHROPIC_API_KEY`` env var.
     model:
-        Claude model ID to use.
+        Claude model ID (default: ``claude-sonnet-4-6``).
     max_tokens:
-        Maximum tokens for Claude's response.
+        Max tokens for Claude's reply.
     system:
-        Custom system prompt.  When ``None`` the default assistant prompt
-        is used (see :class:`ClaudeClient`).
+        Custom system prompt.
+    google_credentials_file:
+        Path to a Google OAuth client-secrets or service-account JSON.
+        Required only when using Google Docs / Drive sources.
+    google_token_file:
+        Where to cache Google OAuth user tokens (default: ``token.json``).
     """
 
     def __init__(
         self,
-        *notebooks: str | Path,
+        *,
         api_key: str | None = None,
         model: str = "claude-sonnet-4-6",
         max_tokens: int = 8192,
         system: str | None = None,
+        google_credentials_file: str | Path | None = None,
+        google_token_file: str | Path = "token.json",
     ) -> None:
         self._client = ClaudeClient(api_key=api_key, model=model, max_tokens=max_tokens)
         self._system = system
-        self._notebooks: list[ParsedNotebook] = []
-
-        if notebooks:
-            self.connect_many(list(notebooks))
+        self._google_creds = google_credentials_file
+        self._google_token = google_token_file
+        self._sources: list[Source] = []
+        self._loaded: list[LoadedSource] | None = None  # cache after first load
 
     # ------------------------------------------------------------------
-    # Connection management
+    # Add sources
     # ------------------------------------------------------------------
 
-    def connect(self, path: str | Path) -> "NotebookLMClaude":
-        """
-        Connect a single notebook.
+    def add_source(self, source: Source) -> "NotebookLMClaude":
+        """Add any :class:`~lm_claude_union.sources.Source` instance."""
+        self._sources.append(source)
+        self._loaded = None  # invalidate cache
+        return self
 
-        Raises :exc:`FileNotFoundError` if the path does not exist.
-        Returns *self* so calls can be chained.
-        """
+    def add_google_doc(self, url_or_id: str) -> "NotebookLMClaude":
+        """Add a Google Doc or Slides deck by URL or document ID."""
+        return self.add_source(
+            GoogleDocSource(
+                url_or_id,
+                credentials_file=self._google_creds,
+                token_file=self._google_token,
+            )
+        )
+
+    def add_google_drive_file(self, url_or_id: str) -> "NotebookLMClaude":
+        """Add any Google Drive file (Docs, Sheets, PDF, text) by URL or file ID."""
+        return self.add_source(
+            GoogleDriveSource(
+                url_or_id,
+                credentials_file=self._google_creds,
+                token_file=self._google_token,
+            )
+        )
+
+    def add_pdf(self, path_or_url: str) -> "NotebookLMClaude":
+        """Add a local PDF file or a public PDF URL."""
+        return self.add_source(PDFSource(path_or_url))
+
+    def add_url(self, url: str) -> "NotebookLMClaude":
+        """Add a public web page."""
+        return self.add_source(WebSource(url))
+
+    def add_youtube(self, url_or_id: str, language: str = "en") -> "NotebookLMClaude":
+        """Add a YouTube video (fetches its transcript)."""
+        return self.add_source(YouTubeSource(url_or_id, language=language))
+
+    def add_notebook(self, path: str | Path) -> "NotebookLMClaude":
+        """Add a Jupyter notebook (.ipynb)."""
         nb = parse_notebook(path)
-        self._notebooks.append(nb)
-        return self
+        return self.add_source(RawTextSource(nb.text, title=nb.title))
 
-    def connect_many(self, paths: list[str | Path]) -> "NotebookLMClaude":
-        """
-        Connect multiple notebooks at once.
+    def add_text_file(self, path: str | Path) -> "NotebookLMClaude":
+        """Add a plain text or Markdown file."""
+        return self.add_source(TextFileSource(path))
 
-        Returns *self* so calls can be chained.
-        """
-        self._notebooks.extend(parse_notebooks(paths))
-        return self
+    def add_text(self, text: str, title: str = "Inline Text") -> "NotebookLMClaude":
+        """Add a raw string as a source."""
+        return self.add_source(RawTextSource(text, title=title))
 
-    def disconnect(self, path: str | Path) -> "NotebookLMClaude":
-        """Remove a specific notebook from the session by path."""
-        resolved = str(Path(path).resolve())
-        self._notebooks = [nb for nb in self._notebooks if nb.path != resolved]
+    def remove_source(self, index: int) -> "NotebookLMClaude":
+        """Remove a source by its index in :attr:`sources`."""
+        self._sources.pop(index)
+        self._loaded = None
         return self
 
     def clear(self) -> "NotebookLMClaude":
-        """Disconnect all notebooks."""
-        self._notebooks = []
+        """Remove all sources."""
+        self._sources = []
+        self._loaded = None
         return self
 
     # ------------------------------------------------------------------
-    # Query
+    # Load & query
     # ------------------------------------------------------------------
+
+    def load_sources(self) -> list[LoadedSource]:
+        """
+        Explicitly fetch/parse all sources and return the loaded list.
+
+        Called automatically by :meth:`query` if not already done.
+        Subsequent calls return the cached result.
+        """
+        if self._loaded is None:
+            self._loaded = [s.load() for s in self._sources]
+        return self._loaded
 
     def query(self, question: str, *, stream: bool = False) -> str | Iterator[str]:
         """
-        Ask Claude a question about the connected notebooks.
+        Ask Claude a question across all connected sources.
 
         Parameters
         ----------
         question:
             The question to ask.
         stream:
-            When ``True``, return a token-by-token :class:`~typing.Iterator`
-            instead of the complete answer string.
+            Return a token-by-token iterator when ``True``.
 
         Raises
         ------
         RuntimeError
-            If no notebooks are connected.
+            If no sources have been added.
         """
-        if not self._notebooks:
+        if not self._sources:
             raise RuntimeError(
-                "No notebooks connected. Call connect() or connect_many() first."
+                "No sources connected.  Call add_google_doc(), add_pdf(), "
+                "add_url(), add_youtube(), add_notebook(), or add_text() first."
             )
-
         context = self._build_context()
         return self._client.query(
             question, context, system=self._system, stream=stream
@@ -136,24 +194,22 @@ class NotebookLMClaude:
     # ------------------------------------------------------------------
 
     @property
-    def notebooks(self) -> list[ParsedNotebook]:
-        """List of currently connected notebooks (read-only copy)."""
-        return list(self._notebooks)
+    def sources(self) -> list[Source]:
+        return list(self._sources)
 
     @property
-    def notebook_titles(self) -> list[str]:
-        """Titles of all connected notebooks."""
-        return [nb.title for nb in self._notebooks]
+    def source_titles(self) -> list[str]:
+        return [s.title for s in self._sources]
 
     def __len__(self) -> int:
-        return len(self._notebooks)
+        return len(self._sources)
 
     def __repr__(self) -> str:
-        titles = ", ".join(repr(t) for t in self.notebook_titles)
+        titles = ", ".join(repr(t) for t in self.source_titles)
         return f"NotebookLMClaude([{titles}])"
 
     # ------------------------------------------------------------------
-    # Context-manager support
+    # Context manager
     # ------------------------------------------------------------------
 
     def __enter__(self) -> "NotebookLMClaude":
@@ -167,11 +223,14 @@ class NotebookLMClaude:
     # ------------------------------------------------------------------
 
     def _build_context(self) -> str:
-        """Concatenate all notebook texts into a single context string."""
+        loaded = self.load_sources()
         sep = "\n\n" + "─" * 60 + "\n\n"
         intro = (
-            f"The following {len(self._notebooks)} notebook(s) are provided as "
-            "your knowledge base:\n\n"
+            f"The following {len(loaded)} source(s) are provided as your "
+            "knowledge base:\n\n"
         )
-        body = sep.join(nb.text for nb in self._notebooks)
-        return intro + body
+        parts: list[str] = []
+        for ls in loaded:
+            header = f"=== {ls.title} [{ls.source_type}] ===\n"
+            parts.append(header + ls.text)
+        return intro + sep.join(parts)

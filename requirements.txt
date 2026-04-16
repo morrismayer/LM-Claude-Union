@@ -1,2 +1,14 @@
+# Core
 anthropic>=0.40.0
 nbformat>=5.9.0
+pypdf>=4.0.0
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+
+# Google NotebookLM bridge (install with: pip install -e ".[google]")
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.2.0
+google-auth-oauthlib>=1.1.0
+
+# YouTube transcripts (install with: pip install -e ".[youtube]")
+youtube-transcript-api>=0.6.0
