@@ -183,6 +183,9 @@ python examples/multi_notebook.py
 
 # Google NotebookLM bridge (requires Google credentials)
 python examples/google_notebooklm_bridge.py
+
+# Upholstered furniture visualizer
+streamlit run examples/upholstered_furniture_visualizer.py
 ```
 
 ---
