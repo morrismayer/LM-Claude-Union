@@ -34,7 +34,9 @@ Usage::
 from .connector import NotebookLMClaude
 from .notebooklm_bridge import NotebookLMBridge
 from .notebook_parser import ParsedNotebook, parse_notebook, parse_notebooks
+from .ops_assistant import OpsAssistant
 from .sources import (
+    AirtableTableSource,
     GoogleDocSource,
     GoogleDriveSource,
     LoadedSource,
@@ -44,15 +46,19 @@ from .sources import (
     TextFileSource,
     WebSource,
     YouTubeSource,
+    fetch_records,
 )
 
 __all__ = [
     # Main classes
     "NotebookLMClaude",
     "NotebookLMBridge",
+    "OpsAssistant",
     # Source types
     "Source",
     "LoadedSource",
+    "AirtableTableSource",
+    "fetch_records",
     "GoogleDocSource",
     "GoogleDriveSource",
     "PDFSource",

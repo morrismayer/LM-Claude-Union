@@ -31,6 +31,7 @@ from typing import Iterator
 
 from .claude_client import ClaudeClient
 from .notebook_parser import parse_notebook
+from .sources.airtable import AirtableTableSource
 from .sources.base import LoadedSource, Source
 from .sources.google_docs import GoogleDocSource, GoogleDriveSource
 from .sources.pdf import PDFSource
@@ -135,6 +136,19 @@ class NotebookLMClaude:
     def add_text(self, text: str, title: str = "Inline Text") -> "NotebookLMClaude":
         """Add a raw string as a source."""
         return self.add_source(RawTextSource(text, title=title))
+
+    def add_airtable_table(
+        self,
+        base_id: str,
+        table: str,
+        *,
+        api_key: str | None = None,
+        **kwargs: object,
+    ) -> "NotebookLMClaude":
+        """Add an Airtable table (flattened to text) as a source."""
+        return self.add_source(
+            AirtableTableSource(base_id, table, api_key=api_key, **kwargs)
+        )
 
     def remove_source(self, index: int) -> "NotebookLMClaude":
         """Remove a source by its index in :attr:`sources`."""
