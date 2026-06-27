@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lm-claude-union"
+version = "0.2.0"
+description = "Direct connection between Google NotebookLM and Claude — query one or many notebooks at once"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "anthropic>=0.40.0",
+    # Core sources
+    "nbformat>=5.9.0",
+    "pypdf>=4.0.0",
+    # Optional but auto-installed for better web scraping
+    "beautifulsoup4>=4.12.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+google = [
+    "google-api-python-client>=2.100.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.1.0",
+]
+youtube = [
+    "youtube-transcript-api>=0.6.0",
+]
+all = [
+    "google-api-python-client>=2.100.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.1.0",
+    "youtube-transcript-api>=0.6.0",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.23",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lm_claude_union"]
