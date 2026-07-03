@@ -1,7 +1,10 @@
 # 30-Second Talking-Head Video Scripts (3 scripts)
 
-Format: direct-to-camera, Morris speaking. ~80-90 spoken words each, paced
-for 30 seconds. [B-ROLL] notes are optional cutaways, not required.
+Format: direct-to-camera, Morris speaking. ~85-100 spoken words each, paced
+for 30 seconds. Each script ends with the confirmed Morris video outro from
+the real Daily Authority Content pipeline: "I'm Morris Mayer. 38 years in
+custom window treatments and upholstery at Plaza Park Interiors in Mamaroneck.
+[specific CTA]." [B-ROLL] notes are optional cutaways, not required.
 
 ---
 
@@ -19,7 +22,11 @@ that, and you get a mismatch that's invisible on a swatch and impossible to
 miss once it's hanging.
 
 Ask your workroom before you finalize yardage. It's a five-minute question
-that saves a change order."
+that saves a change order.
+
+I'm Morris Mayer. 38 years in custom window treatments and upholstery at
+Plaza Park Interiors in Mamaroneck. If you have a fabric question before the
+order ships, reach out."
 
 ---
 
@@ -27,17 +34,20 @@ that saves a change order."
 
 [ON CAMERA]
 "Trim looks beautiful on a sample board and then disappears by the time a
-piece gets fabricated. Here's why: trim isn't one decision, it's three.
+piece gets fabricated. Here's why: trim isn't one decision — it's three.
 
 [B-ROLL: macro shot of cord trim being sewn into a seam]
 
-What trim — tape, cord, tassel. How it's applied — glued is faster, sewn
-moves with the fabric. And where it sits — edge, hem, or a banded inset a few
-inches in.
+What trim — tape, cord, tassel fringe. How it's applied — glued is faster,
+sewn into the seam moves with the fabric. And where it sits — edge, hem, or
+a banded inset a few inches in.
 
-Make all three calls with your workroom before fabrication starts, not
-during. That's the difference between trim that elevates a piece and a
-substitution you didn't choose."
+Make all three calls with your workroom before fabrication starts, not during.
+That's the difference between trim that elevates a piece and a substitution
+you didn't choose.
+
+I'm Morris Mayer. 38 years at Plaza Park Interiors in Mamaroneck. Happy to
+walk through the details on your next project."
 
 ---
 
@@ -54,5 +64,8 @@ That's how much fabric width you're using relative to the finished rod or
 track length. Too little, and even gorgeous fabric looks flat. Get it right,
 and a modest fabric looks intentional.
 
-We calculate it — we don't eyeball it. If you have questions, reach out.
-That's what we're here for."
+We calculate it — we don't eyeball it.
+
+I'm Morris Mayer. 38 years in custom window treatments and upholstery at
+Plaza Park Interiors in Mamaroneck. If you're planning a project and want to
+talk through the spec, I'm glad to help."

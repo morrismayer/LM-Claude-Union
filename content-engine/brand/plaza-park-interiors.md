@@ -29,17 +29,22 @@ superseded by these authoritative internal sources wherever they disagree.
   chauffeuring for designer clients from the **Mamaroneck Metro-North station**
   to the workroom — not "the NYC train station." Keep this precise; it's a
   real, specific differentiator and loses credibility if vague.
-- **Related legal entities (separate brands — don't blend into this content
-  stream unless a piece is explicitly cross-brand):**
-  - Plaza Park Cleaning Services Inc — 100 Sprague Rd, Scarsdale, NY (cleaning,
-    a different trade entirely)
-  - Hard Knox Interiors Inc — 211 W 5th Ave, Knoxville, TN (1 employee)
-  - Plaza Park Decor (plazaparkdecor.com) — consumer-facing retail storefront,
-    sister brand to the trade workroom
-- **"AI influence" / Morris Mayer personal brand:** runs adjacent live events
+- **PPI Clean (maintenance/cleaning division):** Plaza Park Interiors includes
+  a drapery and upholstery cleaning/maintenance division marketed as PPI Clean
+  (legal entity: Plaza Park Cleaning Services Inc, 100 Sprague Rd, Scarsdale,
+  NY). The dossier explicitly says to reference PPI Clean when maintenance,
+  longevity, hospitality, or lifecycle support is relevant — it's a
+  **full-lifecycle partner** value proposition (fabrication + installation +
+  ongoing maintenance), not a separate company to avoid mentioning.
+- **Nationwide reach:** the company supports projects beyond the Westchester/NYC
+  metro — the dossier lists nationwide reach as a confirmed differentiator.
+  Don't imply local-only if a piece is going to a broad audience.
+- **Other related entities (don't blend into trade-workroom content):**
+  - Hard Knox Interiors Inc — 211 W 5th Ave, Knoxville, TN (separate)
+  - Plaza Park Decor (plazaparkdecor.com) — consumer-facing retail storefront
+- **"AI influence" / Morris Mayer personal brand:** adjacent live events
   (e.g., AI build/launch workshops at The White Room at 707, Mamaroneck) — out
-  of scope for this run; needs its own brand/voice profile per the README's
-  known-gaps note.
+  of scope for this run; needs its own brand/voice profile per README.
 
 ## Services
 
@@ -58,8 +63,11 @@ superseded by these authoritative internal sources wherever they disagree.
   this since the late 1980s.
 - **Full service under one roof**: drapery and upholstery in the same workroom,
   so designers aren't juggling two vendors with two timelines.
-- **Luxury service at a competitive/affordable price point** — the brand's own
-  framing is "luxury service, accessible pricing," not bargain-bin positioning.
+- **The workroom designers call when the project is too complex for anyone
+  else — and it still needs to be done on time.** Mid-to-high-end positioning:
+  never imply Plaza Park is low-cost or commodity-priced. The dossier
+  explicitly puts "affordable," "competitive pricing," "industry-leading," and
+  "premium solutions" on the avoid list (see voice guide).
 - **White-glove trade experience**: private chauffeuring for designer clients
   from the Mamaroneck Metro-North station to the workroom — a tangible, specific
   detail worth using instead of generic "great service" language.
@@ -73,6 +81,20 @@ superseded by these authoritative internal sources wherever they disagree.
   a real box-cushion-yardage methodology (area → square yards → ceiling-rounded
   to the nearest 0.25 yard → pattern-repeat and seam-allowance adjustments) to
   quote fabric needs accurately instead of guessing.
+
+## Pricing anchors (internal positioning only — never quote from these directly)
+
+From the official dossier. Present as ranges or typical project framing when
+needed; never as fixed quotes. Never imply Plaza Park is low-cost.
+
+| Service | Typical range |
+|---------|--------------|
+| Custom drapery (fab + install) | $10,000–$75,000+ per project |
+| Custom upholstery | $5,000–$50,000+ per project |
+| Window treatments / shades / systems | $7,500–$50,000+ per project |
+| Cushions & soft goods | $2,500–$20,000+ per project |
+| Installation services | $2,000–$15,000+ per project |
+| PPI Clean maintenance / cleaning | $1,000–$10,000+ per service visit or contract |
 
 ## Social / web presence found
 

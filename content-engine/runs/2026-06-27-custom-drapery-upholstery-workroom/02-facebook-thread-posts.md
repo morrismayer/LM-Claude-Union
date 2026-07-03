@@ -1,112 +1,88 @@
-# Facebook Thread-Style Posts (5 threads, numbered/serial)
+# Facebook Thread Posts (5 conversation-starter posts)
 
-Post each thread as a numbered series (1/3, 2/3, 3/3) across consecutive days
-or back-to-back in a single sitting. All derived from `01-blog-post.md`.
-
----
-
-## Thread 1 — Fabric: the part everyone gets right, the part almost no one checks
-
-**1/3**
-A designer hands me a spec sheet and I can usually tell how the job's going
-to go before we cut anything. Not from the fabric choice — that part's almost
-always right. It's what's missing around it. First up in this series:
-fabric, and the one question that saves the most headaches. 🧵 1/3
-
-**2/3**
-Railroaded fabric runs its pattern sideways on the bolt. For wide drapery
-panels, that can mean avoiding seams across the width entirely — cleaner
-look, less waste. Not every fabric is railroaded, and not every railroaded
-fabric should be used that way every time. But it's worth asking before you
-fall in love with a yardage number, because the answer changes the math. 2/3
-
-**3/3**
-Same goes for pattern repeat — big florals, wide stripes — which needs extra
-yardage so the motif lines up panel to panel. Skip it and you get a mismatch
-that's invisible on a swatch and impossible to miss once it's hanging.
-Working COM (customer's own material)? Loop your workroom in before you place
-the order, not after. 3/3
+NOTE ON FORMAT: Morris's real system uses engagement-driven discussion posts,
+not educational announcements. Each post below poses a genuine question to
+the designer community, shares what Morris is seeing from the workroom side,
+and closes with a soft invitation — not a hard pitch. These are meant to
+start conversations, not broadcast information.
 
 ---
 
-## Thread 2 — Trim: three decisions, not one
+## FB Thread Post 1 — COM and yardage timing
 
-**1/3**
-Trim is where a lot of good specs lose their nerve. Looks beautiful on the
-sample board, then quietly disappears or gets substituted by the time the
-piece is fabricated. Here's why, in three parts. 1/3
+When you're working with customer's own material (COM), when does the
+workroom come into the conversation?
 
-**2/3**
-Trim isn't one decision — tape, cord, tassel fringe, banding is just the
-first choice. The second is application: glued is faster and fine for some
-upholstery, but won't move with the fabric the way a sewn-in seam does on a
-piece that gets real use. 2/3
+I ask because the single biggest COM problem I see isn't the fabric choice
+— it's timing. The yardage gets locked in before anyone's checked it against
+the pattern repeat and whether the goods are railroaded. Then the fabric
+ships, and a yard short means a project problem, not a yardage problem.
 
-**3/3**
-Third decision: placement. Leading edge, hem, or a banded inset a few inches
-in — each reads completely differently. Make all three decisions with your
-workroom before fabrication, and trim elevates the piece instead of becoming
-a surprise substitution. 3/3
+What's your process? Do you loop the workroom in before you finalize the
+order, or is that still a gap in most project workflows?
+
+Happy to share what we're seeing from our side of the spec.
 
 ---
 
-## Thread 3 — Drapery hardware: the part nobody notices until it fails
+## FB Thread Post 2 — Fabric selection for durability
 
-**1/3**
-Fabric is what a client falls in love with. Hardware is what they call us
-about three years later. When it's right, nobody notices. When it's wrong,
-it's the only thing anyone notices. 1/3
+When a client falls in love with a fabric that you know isn't right for the
+application — too delicate, wrong backing for how it'll be constructed — how
+do you handle that conversation?
 
-**2/3**
-Ripplefold track gives you a clean, evenly spaced wave with carriers that
-glide instead of dragging rings across a pole — great for treatments that
-get opened and closed often. Traditional rod-and-ring with pinch pleats gives
-more texture, but ring and bracket quality is exactly what takes the daily
-wear. 2/3
+The approach that tends to work: redirect to a fabric that gives them the
+same visual result with the right performance specs underneath it. But that
+conversation only works if you know the alternatives well, and if the workroom
+is in the spec early enough to flag it.
 
-**3/3**
-The most under-specified number on a lot of jobs: fullness ratio — how much
-fabric width relative to the finished rod or track length. Too little and
-even great fabric looks flat. Get it right and a modest fabric looks
-intentional. We calculate it; we don't eyeball it. 3/3
+Curious how others are approaching this — especially on projects where the
+client is heavily invested in a specific item they found on their own.
 
 ---
 
-## Thread 4 — Upholstery: what's actually inside the piece
+## FB Thread Post 3 — Hardware durability and hidden failure points
 
-**1/3**
-Upholstery is even less visible than drapery hardware — almost everything
-that matters is inside the piece you never see again once it's covered. 1/3
+Nobody talks about drapery hardware until something fails. And when it does,
+it's usually not the fabric — it's the brackets, the rings, or the track
+hardware that was never spec'd for the weight of the panel or the frequency
+of use.
 
-**2/3**
-8-way hand-tied construction ties every spring individually in eight
-directions to the frame. It spreads weight and movement evenly, so the
-seating surface performs the same way years in — not just on day one. Costs
-more in labor. Worth it on anything meant to be lived with. 2/3
+What's your experience with hardware quality on projects you've done? Have
+you shifted toward ripplefold track systems for anything that gets opened and
+closed regularly, or are you still mostly speccing traditional rod-and-ring?
 
-**3/3**
-And the unglamorous part: cushion yardage. We calculate area, convert to
-square yards, round up to the nearest quarter yard, then adjust for pattern
-repeat and seam allowance. Small calculation, big difference between a clean
-quote and a change order mid-fabrication. 3/3
+I'm interested in where the real-world failures are landing for people doing
+active projects right now.
 
 ---
 
-## Thread 5 — Material costs, lead times, and why one workroom matters
+## FB Thread Post 4 — Measurement accountability
 
-**1/3**
-Honest update on materials right now: costs and import timelines on fabric,
-trim, and hardware components have been anything but predictable the last
-couple of years. Not a reason to panic — a reason to build in buffer. 1/3
+One question that doesn't come up often enough at the start of a project:
+who measures, and who owns it when something doesn't fit?
 
-**2/3**
-Hospitality projects — hotel lobbies, restaurant seating, guest rooms — play
-by different rules than residential. Daily public use changes foam choice,
-frame construction, and which drapery hardware actually holds up to dozens of
-open-close cycles a day. 2/3
+Some workrooms measure and absorb the remake cost if they get it wrong. Others
+measure but put the liability back on the designer. Others don't offer
+measuring at all. This matters enormously when you're presenting a project to
+a client — you want to know before install day, not on it.
 
-**3/3**
-That's exactly why we do drapery and upholstery under one roof — same
-standards, same point of contact, in-house measuring and install. One less
-thing for a designer juggling a full room to coordinate. If you have
-questions or need clarity, I'm here to help — just reach out. 3/3
+How do you think about this when you're evaluating a workroom relationship?
+Has it ever changed how you chose a vendor?
+
+---
+
+## FB Thread Post 5 — Lead times and project scheduling
+
+How far in advance are you currently getting custom window treatment and
+upholstery work into your project schedule?
+
+We're seeing extended lead times on certain specialty fabrics and hardware
+components — materials that used to have a 2-3 week turnaround are running
+closer to 5-6 weeks on some product types right now. The designers I work
+with who are managing it well are getting the workroom into the conversation
+before the client presentation, not after the installation window is locked.
+
+Is your planning timeline still roughly the same as it was a couple years ago,
+or have you adjusted? Happy to share what we're looking at from the workroom
+side on specific project types if that's useful.
