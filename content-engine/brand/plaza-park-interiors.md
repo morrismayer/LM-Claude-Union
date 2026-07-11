@@ -80,7 +80,9 @@ superseded by these authoritative internal sources wherever they disagree.
 - **Methodical, not improvised, yardage and cushion math** — the workroom uses
   a real box-cushion-yardage methodology (area → square yards → ceiling-rounded
   to the nearest 0.25 yard → pattern-repeat and seam-allowance adjustments) to
-  quote fabric needs accurately instead of guessing.
+  quote fabric needs accurately instead of guessing. Full formulas and worked
+  examples are in `brand/yardage-calculations.md` — the authoritative
+  calculation reference for all content and quoting.
 
 ## Pricing anchors (internal positioning only — never quote from these directly)
 
